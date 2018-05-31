@@ -15,6 +15,22 @@
                 </footer>
               </blockquote>
             </div>
+            <!-- 按鈕區 -->
+            <div class="card-footer">
+              <div class="btn-group" role="group" aria-label="Basic example">
+
+                <%= link_to like_link_path(link), method: :put, class: "btn btn-dark" do %>
+                  Upvote
+                  <%= link.get_upvotes.size %>
+                <% end %>
+
+                <%= link_to dislike_link_path(link), method: :put, class: "btn btn-dark" do %>
+                  Downvote
+                  <%= link.get_downvotes.size %>
+                <% end %>
+              </div>
+            </div>
+            <!-- 按鈕區 -->
           </div>
         <% end %>
       </div>
