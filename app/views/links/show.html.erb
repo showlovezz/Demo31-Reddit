@@ -22,6 +22,33 @@
                 <%= link_to "Destroy", @link, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
               <% end %>
             </div>
+            <hr>
+            <!-- show comment -->
+            <% @link.comments.each do |comment| %>
+              <div>
+                <p><%= simple_format comment.body %></p>
+                <p class="text-muted">Submitted
+                <%= time_ago_in_words(comment.created_at) %> by <%= comment.user.email %>
+                <% if comment.user == current_user %>
+                  <%= link_to "Delete", link_comment_path(@link, comment), method: :delete %>
+                <% end %>
+                </p>
+              </div>
+              <hr>
+            <% end %>
+
+            <!-- input comment -->
+            <%= form_for [@link, @comment] do |f| %>
+              <h5 class="comments_title mt-3">
+                <%= @link.comments.count %> Comments
+              </h5>
+              <div class="form-group">
+                <%= f.text_area :body, class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Add Comment", class: "btn btn-secondary" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
