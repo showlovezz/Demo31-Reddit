@@ -1,0 +1,15 @@
+<h1>hi</h1>
+
+<% @links.each do |link| %>
+  <ul>
+    <li>
+      <%= link.title %>
+      <%= link.url %>
+      <%= link_to "Show", link_path(link) %>
+      <%= link_to "Edit", edit_link_path(link) %>
+      <%= link_to "Delete", link_path(link), method: :delete, data: {confirm: "Are you sure?"} %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to "Create Link", new_link_path %>
