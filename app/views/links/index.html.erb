@@ -6,10 +6,10 @@
       <%= link.title %>
       <%= link.url %>
       <%= link_to "Show", link_path(link) %>
-      <%= link_to "Edit", edit_link_path(link) %>
-      <%= link_to "Delete", link_path(link), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% if link.user == current_user %>
+        <%= link_to "Edit", edit_link_path(link) %>
+        <%= link_to "Delete", link_path(link), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
     </li>
   </ul>
 <% end %>
-
-<%= link_to "Create Link", new_link_path %>

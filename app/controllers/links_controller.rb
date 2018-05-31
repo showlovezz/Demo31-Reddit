@@ -1,17 +1,18 @@
 class LinksController < ApplicationController
 
   before_action :find_link, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @links = Link.all
   end
 
   def new
-    @link = Link.new
+    @link = current_user.links.build
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.build(link_params)
     if @link.save
       flash[:notice] = "Link 成功"
       redirect_to links_path
