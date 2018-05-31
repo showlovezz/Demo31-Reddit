@@ -1,15 +1,23 @@
-<h1>hi</h1>
-
-<% @links.each do |link| %>
-  <ul>
-    <li>
-      <%= link.title %>
-      <%= link.url %>
-      <%= link_to "Show", link_path(link) %>
-      <% if link.user == current_user %>
-        <%= link_to "Edit", edit_link_path(link) %>
-        <%= link_to "Delete", link_path(link), method: :delete, data: {confirm: "Are you sure?"} %>
-      <% end %>
-    </li>
-  </ul>
-<% end %>
+<section id="section_links">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <% @links.each do |link| %>
+          <div class="card mt-4">
+            <div class="card-header">
+              Reddit
+            </div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p><%= link_to link.title, link_path(link), style: "text-decoration: none;", class: "text-info" %></p>
+                <footer class="blockquote-footer">Submitted
+                  <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

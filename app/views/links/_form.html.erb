@@ -1,20 +1,36 @@
-<%= form_for @link do |f| %>
+<section id="section_form">
+  <div class="container">
+    <div class="col-md-10 offset-md-1">
 
-  <% if @link.errors.any? %>
-    <h2>We have some errors here !</h2>
-    <ul>
-      <% @link.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% if @link.errors.any? %>
+        <h2>We have some errors here !</h2>
+        <ul>
+          <% @link.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= f.label :title, "Title" %>
-  <%= f.text_field :title %>
-
-  <%= f.label :url, "Url" %>
-  <%= f.text_field :url %>
-
-  <%= f.submit %>
-
-<% end %>
+      <%= form_for @link do |f| %>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title text-center">New Link</h2>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= f.label :title, "Title" %>
+              <%= f.text_field :title, class: "form-control" %>
+            </li>
+            <li class="list-group-item">
+              <%= f.label :url, "Url" %>
+              <%= f.text_field :url, class: "form-control" %>
+            </li>
+          </ul>
+          <div class="card-body">
+            <%= f.submit class: "btn btn-success btn-block" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

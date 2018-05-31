@@ -1,3 +1,63 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+nav.navbar {
+  background-color: transparent;
+  .container {
+    a {
+      &:hover {
+      color: #fff;
+      }
+    }
+    .nav-item {
+      .nav-link {
+        &:hover {
+        color: #fff;
+        }
+      }
+    }
+  }
+}
+
+
+#section_links {
+  .container {
+    .card-body {
+      blockquote {
+        p {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
+#section_about {
+  .container {
+    .card-body {
+      blockquote {
+        p {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
+#section_form {
+  .container {
+    margin-top: 90px;
+  }
+}
+
+#section_edit_user {
+  .container {
+    margin-top: 30px;
+  }
+}

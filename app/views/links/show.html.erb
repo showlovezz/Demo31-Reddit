@@ -1,5 +1,30 @@
-<%= @link.title %>
-
-<%= @link.url %>
-
-<%= link_to "Back to index", links_path %>
+<section id="section_about">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="card mt-4">
+          <div class="card-header">
+            Reddit
+          </div>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p><%= link_to @link.title , @link.url, class: "text-info", style: "text-decoration: none;", target: "_blank" %></p>
+              <footer class="blockquote-footer">Submitted
+                <%= time_ago_in_words(@link.created_at) %> by <%= @link.user.email %>
+              </footer>
+            </blockquote>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <%= link_to "Visit URL", @link.url, class: "btn btn-outline-warning", target: "_blank" %>
+              <% if @link.user == current_user -%>
+                <%= link_to "Edit", edit_link_path(@link), class: "btn btn-outline-warning" %>
+                <%= link_to "Destroy", @link, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
